@@ -1,5 +1,5 @@
 # SLA
-This repository will provide the official implementation of [SLA](https://www.arxiv.org/pdf/2509.24006) (Sparse–Linear Attention).
+This repository will provide the official implementation of SLA (Sparse–Linear Attention).
 
 SLA: Beyond Sparsity in Diffusion Transformers via Fine-Tunable Sparse–Linear Attention  
 Paper: https://www.arxiv.org/pdf/2509.24006  
@@ -17,7 +17,8 @@ Jintao Zhang, Haoxu Wang, Kai Jiang, Shuo Yang, Kaiwen Zheng, Haocheng Xi, Ziten
 ![SLA Efficiency](./assets/SLA_efficiency.png)
 
 ## Code Release Progress
-We are still optimizing the code, and will release it to this repository ASAP.
+We are still optimizing the code, and will release it to this repository ASAP.  
+We plan to open-source the code within two weeks, but please note that this is not a promise.
 
 
 
