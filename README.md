@@ -24,11 +24,11 @@ We plan to open-source the code within two weeks, but please note that this is n
 
 ## Citation
 
-If you find this work useful in your research, please cite:
+If you find this work useful, please cite:
 
 ```bibtex
 @article{zhang2025sla,
-  title={SLA: Beyond Sparsity in Diffusion Transformers via Fine-Tunable Sparse–Linear Attention},
+  title={SLA: Beyond Sparsity in Diffusion Transformers via Fine-Tunable Sparse-Linear Attention},
   author={Zhang, Jintao and Wang, Haoxu and Jiang, Kai and Yang, Shuo and Zheng, Kaiwen and Xi, Haocheng and Wang, Ziteng and Zhu, Hongzhou and Zhao, Min and Stoica, Ion and Gonzalez, Joseph E. and Zhu, Jun and Chen, Jianfei},
   journal={arXiv preprint arXiv:2509.24006},
   year={2025}
