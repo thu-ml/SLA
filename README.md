@@ -1,9 +1,9 @@
 # SLA
-This repository will provide the official implementation of SLA (Sparse–Linear Attention).
+This repository provides the implementation of [SLA](https://www.arxiv.org/pdf/2509.24006) (Sparse–Linear Attention), a trainable attention method that fuses sparse and linear attention to accelerate diffusion models.
 
 SLA: Beyond Sparsity in Diffusion Transformers via Fine-Tunable Sparse–Linear Attention  
+Jintao Zhang, Haoxu Wang, Kai Jiang, Shuo Yang, Kaiwen Zheng, Haocheng Xi, Ziteng Wang, Hongzhou Zhu, Min Zhao, Ion Stoica, Joseph E. Gonzalez, Jun Zhu, Jianfei Chen  
 Paper: https://www.arxiv.org/pdf/2509.24006  
-Jintao Zhang, Haoxu Wang, Kai Jiang, Shuo Yang, Kaiwen Zheng, Haocheng Xi, Ziteng Wang, Hongzhou Zhu, Min Zhao, Ion Stoica, Joseph E. Gonzalez, Jun Zhu, Jianfei Chen
 
 ![SLA Overview](./assets/overview_of_SLA.png)
 
@@ -16,10 +16,40 @@ Jintao Zhang, Haoxu Wang, Kai Jiang, Shuo Yang, Kaiwen Zheng, Haocheng Xi, Ziten
 ### Efficiency
 ![SLA Efficiency](./assets/SLA_efficiency.png)
 
-## Code Release Progress
-We are still optimizing the code, and will release it to this repository ASAP.  
-We plan to open-source the code within two weeks, but please note that this is not a promise.
 
+### Installation
+
+```bash
+git clone https://github.com/thu-ml/SLA.git
+cd SLA
+pip install -e .
+```
+
+### Usage
+
+```python
+import torch
+from sparse_linear_attention import SparseLinearAttention
+
+attn = SparseLinearAttention(
+    head_dim=128,
+    topk=0.2,                 # = 1 - sparsity
+    feature_map="softmax",    # options: elu, relu, softmax
+    BLKQ=64,
+    BLKK=64,
+).cuda()
+
+B, H, L, D = 2, 4, 4096, 128
+q = torch.randn((B, H, L, D), dtype=torch.bfloat16, device='cuda')
+k = torch.randn((B, H, L, D), dtype=torch.bfloat16, device='cuda')
+v = torch.randn((B, H, L, D), dtype=torch.bfloat16, device='cuda')
+
+o = attn(q, k, v)
+```
+
+
+## Code Release Plan
+We plan to release SageSLA, a high-performance implementation of SLA that integrates [SageAttention](https://github.com/thu-ml/SageAttention), after our paper is accepted.
 
 
 ## Citation
