@@ -25,9 +25,8 @@ setup(
     packages=find_packages(),
     python_requires='>=3.12',
     install_requires=[
-        'torch>=2.6.0',
+        'torch>=2.8.0',
         'triton>=3.4.0',
-        'flash-linear-attention',
     ],
     extras_require={
         'benchmark': ['flash-attn']
