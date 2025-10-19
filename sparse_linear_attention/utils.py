@@ -37,7 +37,7 @@ def compress_kernel(
 
     nx = min(BLOCK_L, L - idx_l * BLOCK_L)
     x_mean = tl.sum(x, axis=0, dtype=tl.float32) / nx
-    tl.store(XM + xm_offset + idx_l * BLOCK_L + offs_d, x_mean.to(XM.dtype.element_ty))
+    tl.store(XM + xm_offset + idx_l * D + offs_d, x_mean.to(XM.dtype.element_ty))
 
 
 def mean_pool(x, BLK):
