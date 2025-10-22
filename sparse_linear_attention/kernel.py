@@ -103,7 +103,7 @@ def _attn_fwd(
     z_q = tl.load(ZSUM_ptrs)
 
     q = tl.load(Q_ptrs, mask=offs_m[:, None] < L)
-    for block_idx in tl.range(topk, warp_specialize=True):
+    for block_idx in tl.range(topk):
         idx_n = tl.load(LUT_ptr + block_idx)
         n_mask = offs_n < L - idx_n * BLOCK_N
         
@@ -246,7 +246,7 @@ def _attn_bwd_dq(
     lse = tl.load(LSE_ptrs, mask=offs_m < L, other=float("inf"))
     
     dq = tl.zeros([BLOCK_M, D], dtype=tl.float32)
-    for block_idx in tl.range(topk, warp_specialize=True):
+    for block_idx in tl.range(topk, num_stages=2):
         idx_n = tl.load(LUT_ptr + block_idx)
         n_mask = offs_n < L - idx_n * BLOCK_N
         
