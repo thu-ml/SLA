@@ -38,7 +38,7 @@ class SparseLinearAttention(nn.Module):
         self.topk = topk
         self.BLKQ = BLKQ
         self.BLKK = BLKK
-        self.proj_l = nn.Linear(head_dim, head_dim, dtype=self.dtype)
+        self.proj_l = nn.Linear(head_dim, head_dim, dtype=torch.float32)
 
         if feature_map == 'elu':
             def elu_feature_map(x):
@@ -91,7 +91,9 @@ class SparseLinearAttention(nn.Module):
         c_k = self.feature_map_k(k).contiguous().to(self.dtype)
 
         o_s, o_l = _attention.apply(q, k, v, c_q, c_k, sparse_map, lut, real_topk, self.BLKQ, self.BLKK)
-        o = (o_s + self.proj_l(o_l)).to(dtype)
+        with torch.amp.autocast('cuda', dtype=self.dtype):
+            o_proj = self.proj_l(o_l)
+        o = (o_s + o_proj).to(dtype)
 
         if return_sparsity:
             return o, real_topk / sparse_map.shape[-1]
