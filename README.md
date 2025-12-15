@@ -47,10 +47,9 @@ v = torch.randn((B, H, L, D), dtype=torch.bfloat16, device='cuda')
 o = attn(q, k, v)
 ```
 
+### SageSLA
 
-## Code Release Plan
-We plan to release SageSLA, a high-performance implementation of SLA that integrates [SageAttention](https://github.com/thu-ml/SageAttention), after our paper is accepted.
-
+We provide a fast quantized implementation using [SpargeAttn](https://github.com/thu-ml/SpargeAttn) of the forward pass of SLA, please refer to the `SageSLA/` directory.
 
 ## Citation
 
