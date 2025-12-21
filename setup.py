@@ -26,7 +26,7 @@ setup(
     python_requires='>=3.12',
     install_requires=[
         'torch>=2.7.0',
-        'triton>=3.3.0',
+        'triton>=3.3.0,<=3.6.0',
     ],
     extras_require={
         'benchmark': ['flash-attn']
