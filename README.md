@@ -22,17 +22,39 @@ Paper: https://www.arxiv.org/pdf/2509.24006
 ```bash
 git clone https://github.com/thu-ml/SLA.git
 cd SLA
+```
 
-# For Linux/macOS:
+**For Linux/macOS:**
+```bash
+# Option 1: Use the install script
+./clean_install.sh
+
+# Option 2: Manual installation
 pip install -e .[triton]
+```
 
-# For Windows:
+**For Windows:**
+```cmd
+REM Option 1: Use the install script
+clean_install.bat
+
+REM Option 2: Manual installation
 pip install -e .[triton-windows]
 ```
 
-**Note**: Triton is required for running SLA. Install the appropriate version for your platform:
+**Note**:
+- Triton is required for running SLA
 - Linux/macOS: Use `[triton]` extra (installs `triton>=3.3.0`)
 - Windows: Use `[triton-windows]` extra (installs `triton-windows>=3.5.1.post22`)
+
+**If updating from a previous installation**, use the clean install scripts to remove old package metadata, or manually run:
+```bash
+# Remove old metadata and reinstall
+pip uninstall -y sparse-linear-attention
+rm -rf sparse_linear_attention.egg-info build dist  # Linux/macOS
+# or on Windows: rd /s /q sparse_linear_attention.egg-info build dist
+pip install -e .[triton-windows]  # or [triton] for Linux/macOS
+```
 
 ### Usage
 
