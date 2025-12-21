@@ -58,10 +58,11 @@ If you find this work useful, please cite:
 ```bibtex
 @article{zhang2025sla,
   title={SLA: Beyond Sparsity in Diffusion Transformers via Fine-Tunable Sparse-Linear Attention},
-  author={Zhang, Jintao and Wang, Haoxu and Jiang, Kai and Yang, Shuo and Zheng, Kaiwen and Xi, Haocheng and Wang, Ziteng and Zhu, Hongzhou and Zhao, Min and Stoica, Ion and Gonzalez, Joseph E. and Zhu, Jun and Chen, Jianfei},
+  author={Zhang, Jintao and Wang, Haoxu and Jiang, Kai and Yang, Shuo and Zheng, Kaiwen and Xi, Haocheng and Wang, Ziteng and Zhu, Hongzhou and Zhao, Min and Stoica, Ion and others},
   journal={arXiv preprint arXiv:2509.24006},
   year={2025}
 }
+
 @inproceedings{zhang2025sageattention,
   title={SageAttention: Accurate 8-Bit Attention for Plug-and-play Inference Acceleration}, 
   author={Zhang, Jintao and Wei, Jia and Zhang, Pengle and Zhu, Jun and Chen, Jianfei},
