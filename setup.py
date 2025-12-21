@@ -26,9 +26,10 @@ setup(
     python_requires='>=3.12',
     install_requires=[
         'torch>=2.7.0',
-        'triton>=3.3.0,<=3.6.0',
     ],
     extras_require={
-        'benchmark': ['flash-attn']
+        'benchmark': ['flash-attn'],
+        'triton': ['triton>=3.3.0'],
+        'triton-windows': ['triton-windows>=3.5.1.post22']
     }
 )

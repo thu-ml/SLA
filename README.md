@@ -22,8 +22,17 @@ Paper: https://www.arxiv.org/pdf/2509.24006
 ```bash
 git clone https://github.com/thu-ml/SLA.git
 cd SLA
-pip install -e .
+
+# For Linux/macOS:
+pip install -e .[triton]
+
+# For Windows:
+pip install -e .[triton-windows]
 ```
+
+**Note**: Triton is required for running SLA. Install the appropriate version for your platform:
+- Linux/macOS: Use `[triton]` extra (installs `triton>=3.3.0`)
+- Windows: Use `[triton-windows]` extra (installs `triton-windows>=3.5.1.post22`)
 
 ### Usage
 
