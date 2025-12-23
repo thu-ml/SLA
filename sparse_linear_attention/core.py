@@ -90,13 +90,7 @@ class SparseLinearAttention(nn.Module):
         c_q = self.feature_map_q(q).contiguous().to(self.dtype)
         c_k = self.feature_map_k(k).contiguous().to(self.dtype)
 
-        o_s = _attention.apply(q, k, v, sparse_map, lut, real_topk, self.BLKQ, self.BLKK)
-        def calc_linear(q, k, v):
-            kvsum = k.transpose(-1, -2) @ v
-            ksum = torch.sum(k, dim=-2, keepdim=True)
-            return (q @ kvsum) / (1e-5 + (q * ksum).sum(dim=-1, keepdim=True))
-        o_l = calc_linear(c_q, c_k, v)
-
+        o_s, o_l = _attention.apply(q, k, v, c_q, c_k, sparse_map, lut, real_topk, self.BLKQ, self.BLKK)
         with torch.amp.autocast('cuda', dtype=self.dtype):
             o_proj = self.proj_l(o_l)
         o = (o_s + o_proj).to(dtype)

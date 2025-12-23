@@ -2,7 +2,7 @@
 This repository provides the implementation of [SLA](https://www.arxiv.org/pdf/2509.24006) (Sparse–Linear Attention), a trainable attention method that fuses sparse and linear attention to accelerate diffusion models.
 
 SLA: Beyond Sparsity in Diffusion Transformers via Fine-Tunable Sparse–Linear Attention  
-*Jintao Zhang, Haoxu Wang, Kai Jiang, Shuo Yang, Kaiwen Zheng, Haocheng Xi, Ziteng Wang, Hongzhou Zhu, Min Zhao, Ion Stoica, Joseph E. Gonzalez, Jianfei Chen, Jun Zhu*  
+Jintao Zhang, Haoxu Wang, Kai Jiang, Shuo Yang, Kaiwen Zheng, Haocheng Xi, Ziteng Wang, Hongzhou Zhu, Min Zhao, Ion Stoica, Joseph E. Gonzalez, Jun Zhu, Jianfei Chen  
 Paper: https://www.arxiv.org/pdf/2509.24006  
 
 ![SLA Overview](./assets/overview_of_SLA.png)
@@ -47,9 +47,10 @@ v = torch.randn((B, H, L, D), dtype=torch.bfloat16, device='cuda')
 o = attn(q, k, v)
 ```
 
-### SageSLA
 
-We provide **SageSLA**, a very fast SLA (Sparse-Linear Attention) forward pass based on [SageAttention](https://github.com/thu-ml/SageAttention). It uses some code from [SpargeAttn](https://github.com/thu-ml/SpargeAttn). Please refer to the `SageSLA/` directory for the usage of SageSLA.
+## Code Release Plan
+We plan to release SageSLA, a high-performance implementation of SLA that integrates [SageAttention](https://github.com/thu-ml/SageAttention), after our paper is accepted.
+
 
 ## Citation
 
@@ -58,15 +59,8 @@ If you find this work useful, please cite:
 ```bibtex
 @article{zhang2025sla,
   title={SLA: Beyond Sparsity in Diffusion Transformers via Fine-Tunable Sparse-Linear Attention},
-  author={Zhang, Jintao and Wang, Haoxu and Jiang, Kai and Yang, Shuo and Zheng, Kaiwen and Xi, Haocheng and Wang, Ziteng and Zhu, Hongzhou and Zhao, Min and Stoica, Ion and others},
+  author={Zhang, Jintao and Wang, Haoxu and Jiang, Kai and Yang, Shuo and Zheng, Kaiwen and Xi, Haocheng and Wang, Ziteng and Zhu, Hongzhou and Zhao, Min and Stoica, Ion and Gonzalez, Joseph E. and Zhu, Jun and Chen, Jianfei},
   journal={arXiv preprint arXiv:2509.24006},
-  year={2025}
-}
-
-@inproceedings{zhang2025sageattention,
-  title={SageAttention: Accurate 8-Bit Attention for Plug-and-play Inference Acceleration}, 
-  author={Zhang, Jintao and Wei, Jia and Zhang, Pengle and Zhu, Jun and Chen, Jianfei},
-  booktitle={International Conference on Learning Representations (ICLR)},
   year={2025}
 }
 ```
