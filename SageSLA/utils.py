@@ -65,3 +65,8 @@ def get_block_map(q, k, topk_ratio, BLKQ=64, BLKK=64):
     sparse_map = torch.zeros_like(pooled_score, dtype=torch.int8)
     sparse_map.scatter_(-1, lut, 1)
     return sparse_map, lut, topk
+
+
+def get_cuda_arch(device_index):
+    major, minor = torch.cuda.get_device_capability(device_index)
+    return f"sm{major}{minor}"
