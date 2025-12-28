@@ -78,9 +78,11 @@ def bench_attention(BATCH, H, N_CTX, HEAD_DIM, causal, mode, provider, device=DE
     else:
         sparse_map, lut, real_topk = get_block_map(q, k, topk_ratio=1 - sparsity, BLKQ=128, BLKK=64)
             
-        c_q = (torch.nn.functional.elu(q) + 1).detach()
-        c_k = (torch.nn.functional.elu(k) + 1).detach()
-        fn = lambda: _attention.apply(q, k, v, c_q, c_k, sparse_map, lut, real_topk, 128, 64)
+        def calc_linear(q, k, v):
+            kvsum = k.transpose(-1, -2) @ v
+            ksum = torch.sum(k, dim=-2, keepdim=True)
+            return (q @ kvsum) / (1e-5 + (q * ksum).sum(dim=-1, keepdim=True))
+        fn = lambda: (_attention.apply(q, k, v, sparse_map, lut, real_topk, 128, 64), calc_linear(q, k, v))
         
         if mode == "bwd":
             o_s, o_l = fn()
