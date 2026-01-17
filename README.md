@@ -5,6 +5,9 @@ SLA: Beyond Sparsity in Diffusion Transformers via Fine-Tunable Sparse–Linear 
 *Jintao Zhang, Haoxu Wang, Kai Jiang, Shuo Yang, Kaiwen Zheng, Haocheng Xi, Ziteng Wang, Hongzhou Zhu, Min Zhao, Ion Stoica, Joseph E. Gonzalez, Jianfei Chen, Jun Zhu*  
 Paper: https://www.arxiv.org/pdf/2509.24006  
 
+We provide two versions of SLA: you can use either the [SLA-1 branch](https://github.com/thu-ml/SLA/tree/SLA-1) or the [main branch](https://github.com/thu-ml/SLA).
+
+
 ![SLA Overview](./assets/overview_of_SLA.png)
 
 ### Motivation
