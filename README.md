@@ -67,7 +67,7 @@ If you find this work useful, please cite:
 }
 
 @article{zhang2026sla2,
-  title={SLA2: Sparse-Linear Attention with Learnable Routing and QAT},
+  title={SLA2: Sparse-Linear Attention with Learnable Routing and Quantization-aware Training},
   author={Zhang, Jintao and Wang, Haoxu and Jiang, Kai and Zheng, Kaiwen and Jiang, Youhe and Stoica, Ion and Chen, Jianfei and Zhu, Jun and Gonzalez, Joseph E},
   journal={arXiv preprint arXiv:2602.12675},
   year={2026}
